@@ -1,76 +1,97 @@
-import React, { Component } from "react";
-import Aux from '../../hoc/Aux/Aux';
+import React, { Component } from 'react';
 import classes from './Calc.css';
-// import Operator from '../../components/Operator/Operator';
 
-class Calc extends Component{
+class Calculator extends Component{
     state = {
-        number1: 0,
-        number2: 0,
-        result: 0
+        displayBox: "",
+        calcResult: 0
     }
 
-    numbersChangeHandler = (event, id, no) => {
-        const dno = Number(event.target.value)
-        const res = dno + Number(no);
-        if(id === 1){
-            this.setState({number1: dno, result: res})
-        }
-        else{
-            this.setState({
-                number2: dno,
-                result: res});
-        }
-        
-    }
-    
-    resultChangeHandler = (event, id) => {
-        const dno = Number(event.target.value)
-        // const res = dno + Number(no);
-        if(id === 1){
-            this.setState({number1: dno});
-        }
-        else{
-            this.setState({number2: dno});
-        }
-        
+    resetResultHandler = () => this.setState({displayBox: "", calcResult: 0})
+
+    displayBoxHandler = (event, val) => {
+        const currentDspBox = this.state.displayBox;
+        const updatedDspBox = this.updateDspBoxVal(val, currentDspBox);
+        this.setState({displayBox: updatedDspBox});
     }
 
-    getResultHandler = () => {
-        const no1 = this.state.number1;
-        const no2 = this.state.number2;
-        this.setState({result: no1 + no2})
+    updateDspBoxVal(c, displayStr) {
+        let updatedStr = displayStr;
+        const lenOfDisplay = displayStr.length;
+        if (lenOfDisplay > 0){
+            const operatorSet = "+-*/%.";
+            if( !operatorSet.includes(c)){
+                return updatedStr+c;
+            }
+            updatedStr = displayStr.replace(/^(.*)/,'$1'+c);
+            return updatedStr;
+        }
+        return c;
     }
 
-    resetResult = () => {
-        this.setState({
-            number1: 0,
-            number2: 0,
-            result:0})
+    ResultBoxHandler = () => {
+        const result = this.state.displayBox;
+        this.setState({calcResult: eval(result), displayBox: ""})
     }
 
     render(){
-
-        const num1 = this.state.number1;
-        const num2 = this.state.number2;
-
         return (
-            <div className={classes.calc}>
-                {/* <Operator no1={this.state.number1} no2={this.state.number2} 
-                resultChange={this.numbersChangeHandler} /> */}
-                <h3>Number1</h3>
-                <input type="text" value={num1} 
-                    onChange={(event)=> this.resultChangeHandler(event, 1) } />
-                <h3>Number2</h3>
-                <input type="text" value={num2} 
-                    onChange={(event)=> this.resultChangeHandler(event, 2) } />
-                <h3>Result : {this.state.result}</h3>
-                
-                <button onClick={this.getResultHandler} >Add</button>&nbsp;
-                <button onClick={this.resetResult}>Reset</button>
+            <div className={classes.Calc}>
+                <div className={classes.CalcHeader}>
+                    <p style={{color: "grey"}}>{this.state.displayBox}</p>
+                    <p>{this.state.calcResult}</p>
+                </div>
+
+                <div className={classes.Btn_group}>
+                        <button className={classes.Button} onClick={this.resetResultHandler}>C</button>
+                        <button className={classes.Button}>&plusmn;</button>
+                        <button className={classes.Button}
+                            onClick={(event) => this.displayBoxHandler(event, '%')}>%</button>
+                        <button className={classes.Button} 
+                            onClick={(event) => this.displayBoxHandler(event, '/')}>/</button>
+                </div>
+                <div className={classes.Btn_group}>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '7')}>7</button>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '8')}>8</button>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '9')}>9</button>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '*')}>*</button>
+                </div>
+                <div className={classes.Btn_group}>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '4')}>4</button>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '5')}>5</button>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '6')}>6</button>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '-')}>-</button>
+                </div>
+                <div className={classes.Btn_group}>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '1')}>1</button>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '2')}>2</button>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '3')}>3</button>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '+')}>+</button>
+                </div>
+                <div className={classes.Btn_group}>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '0')}>0</button>
+                    <button className={classes.Button}
+                        onClick={(event) => this.displayBoxHandler(event, '.')}>.</button>
+                    <button className={classes.Button}>&#8617;</button>
+                    <button className={classes.Button}
+                        onClick={this.ResultBoxHandler}>=</button>
+                </div>
             </div>
-        )
+        );
     }
 }
 
-export default Calc
+export default Calculator;

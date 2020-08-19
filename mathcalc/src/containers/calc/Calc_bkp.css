@@ -1,37 +1,22 @@
-.Calc{
-    background-color: white;
+.calc{
+    border: 2px solid #eee;
     padding: 10px;
     width: 50%;
-    height: 469px;
-    margin: 16px 10px 10px 200px;
+    margin: 16px auto;
     box-shadow: 0 2px 3px #ccc;
+    /* text-align: center; */
 }
 
-@media only screen and (max-width: 768px){
-    /* For Mobile Phones only */
-    .Calc{
-        width: 88%;
-        margin: 25px 12px;
-    }
+.Result{
+    padding: 10px;
+    width: 10%;
+    height: 10px;
+    margin: 16px auto;
 }
 
-.CalcHeader{
-    border: 1px solid black;
-    margin: 0px;
-    padding: 1px 4px 1px 1px;
+.CalcWindow{
     width: 100%;
-    height: 100px;
-    text-align: right;
 }
-
-.CalcHeader p{
-    padding-top: 5px;
-    padding-bottom: 50px;
-    margin: 0px;
-    font-weight: bold;
-}
-
-/* from backup css */
 
 .Button{
     /* background-color: black;
@@ -59,7 +44,7 @@
     border: 0.1px solid #eee;
     color: white;
     /* padding: 15px 32px; */
-    padding: 11%;
+    padding: 5%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
