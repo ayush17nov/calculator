@@ -1,76 +1,76 @@
-.Calc{
+.CalcBody{
+    border: 1px solid #3858c5;
+    box-sizing: border-box;
+    border-radius: 25px;
     background-color: white;
-    padding: 10px;
-    width: 50%;
-    height: 469px;
-    margin: 16px 10px 10px 200px;
-    box-shadow: 0 2px 3px #ccc;
+    height: 500px;
+    margin: 25px 300px;
+    display: block;
+    /* box-shadow: 0 2px 3px #ccc; */
 }
 
 @media only screen and (max-width: 768px){
     /* For Mobile Phones only */
-    .Calc{
-        width: 88%;
-        margin: 25px 12px;
+    .CalcBody{
+        width: 90%;
+        margin: 20px 20px;
     }
 }
 
 .CalcHeader{
-    border: 1px solid black;
-    margin: 0px;
-    padding: 1px 4px 1px 1px;
-    width: 100%;
-    height: 100px;
-    text-align: right;
+    border: 0;
+    height: 30%;
 }
 
 .CalcHeader p{
-    padding-top: 5px;
-    padding-bottom: 50px;
-    margin: 0px;
+    text-align: right;
+    margin-right: 5%;
+    height: 60%;
     font-weight: bold;
+    /* font-size: 200%; */
 }
 
-/* from backup css */
+.CalcButton{
+    text-align: center;
+    border: 0;
+    width: 100%;
+    height: 70%;
+    display: inline-block;
+}
 
 .Button{
-    /* background-color: black;
-    border: 0.015px solid #eee; */
-    /* padding: 5% 12%; */
-    /* margin: 0px; */
-    /* padding-left: 20px;
-    padding-right: 20px; */
-    width: 20px;
-    height: 50px;
-    /* text-align: center;
+    background-color: #1f2525;
     color: white;
-    text-decoration: none;
-    /* display: inline-block; */
-    /* font-size: 16px; */
+    /* border: 0; */
+    font-size: 400%;
+    width: 25%;
+    height: 20%;
+    margin: 0px;
+    padding: 0px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-left: 0;
+    border-right: 1px solid rgba(255,255,255,0.04);
+    border-top: 0;
+    box-shadow: inset -1px -1px 0 0 rgba(0,0,0,0.3);
     cursor: pointer;
+    font-size: 1.1rem;
+    outline: none;
 }
 
-/* .Button:hover {
-    background-color: #262626;
-} */
-
-.Btn_group .Button {
-    background-color: black; /* Green */
-    border: 0.1px solid #eee;
+.ButtonPrimaryOperator{
+    background-color: #a9133d;
     color: white;
-    /* padding: 15px 32px; */
-    padding: 11%;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    font-size: 300%;
+    width: 25%;
+    height: 20%;
+    margin: 0px;
+    padding: 0px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-left: 0;
+    border-right: 1px solid rgba(255,255,255,0.04);
+    border-top: 0;
+    box-shadow: inset -1px -1px 0 0 rgba(0,0,0,0.3);
     cursor: pointer;
-}
-  
-.Btn_group .Button:not(:last-child) {
-    border-right: none; /* Prevent double borders */
-}
-
-.Btn_group .Button:hover {
-    background-color: #262626;
+    font-size: 1.1rem;
+    outline: none;
 }
